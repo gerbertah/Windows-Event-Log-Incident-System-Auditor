@@ -38,3 +38,25 @@ Abre PowerShell como **Administrador**:
 
 # 4. Volcado total de todos los logs habilitados del sistema (sin límite de eventos)
 .\Audit-WindowsEventos.ps1 -Dias 30 -Modo Completo -SinPreguntas -MaximoPorRegistro 0
+
+💡 Consejo para diagnóstico de caídas:
+
+Cuando investigues reinicios inesperados o pantallas azules, inicia correlacionando Sistema y Actualizaciones. Cruzar eventos de System (41, 6008, 1074, 1001) con la marca de tiempo de WindowsUpdateClient permite confirmar si el reinicio fue derivado de un parche reciente o una anomalía eléctrica/hardware.
+
+📂 Archivos Generados en la Salida
+El script organiza los resultados dentro de %ProgramData%\AuditoriaEventosWindows\<EQUIPO>_<MODO>_<TIMESTAMP>\:
+
+Eventos_<NombreCanal>.csv: Un archivo CSV por cada canal analizado con el mensaje completo del evento, origen, ID, nivel de severidad y fecha/hora.
+
+Resumen_Registros.csv: Tabla de control con la cantidad de eventos procesados por log, errores de lectura y advertencia de límite alcanzado.
+
+Resumen_Eventos.html: Dashboard visual en modo oscuro para revisión rápida y presentación de resultados a clientes o directivos.
+
+Notas_y_Cobertura.txt: Metadatos de la corrida, tiempos transcurridos y consideraciones forenses para evitar falsos positivos.
+
+🛡️ Notas Técnicas y Buenas Prácticas
+Solo lectura: No altera directivas, no borra registros ni modifica la configuración del sistema.
+
+Retención: No recupera eventos previamente sobrescritos si el tamaño máximo configurado en el canal de Windows ya fue superado.
+
+Consumo: Cuenta con indicador de avance en consola cada 500 registros y límite preventivo configurable (-MaximoPorRegistro, 20.000 por defecto).

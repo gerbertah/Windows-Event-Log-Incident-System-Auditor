@@ -28,13 +28,13 @@ Abre PowerShell como **Administrador**:
 
 ```powershell
 # 1. Auditoría estándar recomendada (30 días, todos los vectores clave)
-.\Audit-WindowsEventos-30dias.ps1 -Dias 30 -Modo Todo -SinPreguntas
+.\Audit-WindowsEventos.ps1 -Dias 30 -Modo Todo -SinPreguntas
 
 # 2. Diagnóstico exclusivo de apagados, cuelgues y reinicios
-.\Audit-WindowsEventos-30dias.ps1 -Dias 30 -Modo Sistema -SinPreguntas
+.\Audit-WindowsEventos.ps1 -Dias 30 -Modo Sistema -SinPreguntas
 
 # 3. Trazabilidad de parches y fallos de Windows Update
-.\Audit-WindowsEventos-30dias.ps1 -Dias 30 -Modo Actualizaciones -SinPreguntas
+.\Audit-WindowsEventos.ps1 -Dias 30 -Modo Actualizaciones -SinPreguntas
 
 # 4. Volcado total de todos los logs habilitados del sistema (sin límite de eventos)
-.\Audit-WindowsEventos-30dias.ps1 -Dias 30 -Modo Completo -SinPreguntas -MaximoPorRegistro 0
+.\Audit-WindowsEventos.ps1 -Dias 30 -Modo Completo -SinPreguntas -MaximoPorRegistro 0
